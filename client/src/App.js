@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 
 import memories from "./images/logo.png";
@@ -11,11 +11,13 @@ import { getPosts } from "./actions/posts"; // import the getPosts action creato
 
 // Initialize the App component
 const App = () => {
+  const [currentId, setCurrentId] = useState(null); // initialize the currentId state
   const classes = useStyles(); // initialize the styles
 
   const dispatch = useDispatch(); // initialize the useDispatch hook
 
-  useEffect(() => { // initialize the useEffect hook
+  useEffect(() => {
+    // initialize the useEffect hook
     dispatch(getPosts()); // dispatch the getPosts action creator
   }, [dispatch]);
 
@@ -36,10 +38,10 @@ const App = () => {
           spacing={3}
         >
           <Grid item xs={12} sm={6}>
-            <Posts />
+            <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Form />
+            <Form currentId={currentId} setCurrentId={setCurrentId}/>
           </Grid>
         </Grid>
       </Grow>

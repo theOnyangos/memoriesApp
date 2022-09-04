@@ -24,7 +24,6 @@ const Form = () => {
     selectedFile: "",
   }); // this is the state of the form
 
-
   const clear = () => {}; // initialize the clear function
 
   return (
@@ -43,7 +42,9 @@ const Form = () => {
           label="Creator"
           fullWidth
           value={postData.creator}
-          onChange={(e) => {setPostData({ ...postData, creator: e.target.value })}}
+          onChange={(e) => {
+            setPostData({ ...postData, creator: e.target.value });
+          }}
         />
         <TextField
           name="title"
@@ -51,7 +52,9 @@ const Form = () => {
           label="title"
           fullWidth
           value={postData.title}
-          onChange={(e) => {setPostData({ ...postData, title: e.target.value })}}
+          onChange={(e) => {
+            setPostData({ ...postData, title: e.target.value });
+          }}
         />
         <TextField
           name="message"
@@ -59,7 +62,9 @@ const Form = () => {
           label="message"
           fullWidth
           value={postData.message}
-          onChange={(e) => {setPostData({ ...postData, message: e.target.value })}}
+          onChange={(e) => {
+            setPostData({ ...postData, message: e.target.value });
+          }}
         />
         <TextField
           name="tags"
@@ -67,7 +72,9 @@ const Form = () => {
           label="tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) => {setPostData({ ...postData, tags: e.target.value })}}
+          onChange={(e) => {
+            setPostData({ ...postData, tags: e.target.value.split(",") });
+          }}
         />
 
         {/* Upload file */}
